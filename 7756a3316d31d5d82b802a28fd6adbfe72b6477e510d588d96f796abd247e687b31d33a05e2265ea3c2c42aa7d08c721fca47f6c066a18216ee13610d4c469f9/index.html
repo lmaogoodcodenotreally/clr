@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="" />
-    <meta name="description" content="" />
+    <meta name="author" content="">
+    <meta name="description" content="">
     <meta property="og:title" content="CS:2 | CLR - 1.0002 (beta)">
     <meta property="og:description" content="Best CS:2 username configurator">
     <meta name="theme-color" content="#00b7ff">
-    <meta property="og:image" content="https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/2.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/2.png">
     <meta property="og:url" content="https://lmaogoodcodenotreally.github.io/clr/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/">
-    <link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="192x192" href="android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="512x512" href="android-chrome-512x512.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" href="favicon.ico">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CS:2 | CLR</title>
@@ -28,12 +33,15 @@
             align-items: center;
             height: 100vh;
         }
+
         .btn-primary {
             box-shadow: none;
         }
+
         .btn-primary:focus {
             box-shadow: none;
         }
+
         .container {
             background-color: #222121;
             border-radius: 8px;
@@ -93,7 +101,7 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             width: calc(50% - 10px);
-            overflow-y: auto; 
+            overflow-y: auto;
         }
     </style>
 </head>
@@ -127,7 +135,7 @@
                     <button class="btn btn-primary" onclick="processText()">Process</button>
                 </div>
             </div>
-            <label for="output">Select & copy content below:</label>
+            <label for="output">Select &amp; copy content below:</label>
 
             <div class="output" id="outputArea"></div>
         </div>
@@ -146,31 +154,31 @@
 
             var processedText = inputText;
             if (selectedColor === 'white-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'red-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'default-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'green-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'lightgreen-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'moneygreen-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'lightred-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'ct-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 't-c0') {
-                processedText = '	' + inputText; 
+                processedText = '	' + inputText;
             } else if (selectedColor === 'lightblue-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'blue-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'purple-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'lightred2-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             }
             outputArea.innerHTML = '<p>' + processedText + '</p>';
             updatePreview();
@@ -184,36 +192,36 @@
 
             var processedText = inputText;
             if (selectedColor === 'white-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'red-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'default-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'green-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'lightgreen-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'moneygreen-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'lightred-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'ct-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 't-c0') {
-                processedText = '	' + inputText; 
+                processedText = '	' + inputText;
             } else if (selectedColor === 'lightblue-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'blue-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'purple-c0') {
-                processedText = '' + inputText; 
+                processedText = '' + inputText;
             } else if (selectedColor === 'lightred2-c0') {
-                processedText = '' + inputText; 
-            }   
+                processedText = '' + inputText;
+            }
 
             // Hide special character in preview and set text color to white for "white-c0" and "red-c0"
             var textColor = selectedColor === 'white-c0' ? 'white' : 'inherit';
-            previewArea.innerHTML = '<h2>Preview (unimplemented)</h2>' +
+            previewArea.innerHTML = '<h2>Preview</h2>' +
                 '<p style="color: ' + textColor + ';">' + processedText.replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('	', '').replace('', '').replace('', '').replace('', '').replace('', '') + '</p>';
         }
     </script>
