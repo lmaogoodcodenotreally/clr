@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NickGenerator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f0f0f0;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .btn-primary {
+            box-shadow: none;
+        }
+        .btn-primary:focus {
+            box-shadow: none;
+        }
+        .container {
+            background-color: #222121;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(45, 45, 45, 0.1);
+            padding: 20px;
+            width: 800px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .input-container {
+            width: calc(50% - 10px);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            border-color: #1c1c1c;
+            background-color: #1c1c1c;
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .form-control {
+            border-radius: 4px;
+            border-color: #1c1c1c;
+            background-color: #1c1c1c;
+            color: #fff;
+        }
+
+        .output {
+            background-color: #1c1c1c;
+            padding: 10px;
+            border-radius: 4px;
+            min-height: 130px;
+            width: calc(100% - 10px);
+            overflow-y: auto;
+        }
+
+        .output p {
+            margin: 0;
+        }
+
+        .select-menu {
+            width: calc(50% - 10px);
+            color: #fff;
+        }
+
+        .preview {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(50% - 10px);
+            overflow-y: auto; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-container">
+            <h1 class="text-center">Name Generator</h1>
+            <label for="paramcolorset0">Color</label>
+            <div class="input-group">
+                <select class="form-control" id="paramcolorset0" onchange="updatePreview()">
+                    <option value="white-c0">White</option>
+                    <option value="lightred-c0">LightRed</option>
+                    <option value="lightred2-c0">LightRed2</option>
+                    <option value="red-c0">Red</option>
+                    <option value="t-c0">T Color</option>
+                    <option value="moneygreen-c0">MoneyGreen</option>
+                    <option value="green-c0">Green</option>
+                    <option value="lightgreen-c0">LightGreen</option>
+                    <option value="lightblue-c0">LightBlue</option>
+                    <option value="ct-c0">CT Color</option>
+                    <option value="blue-c0">Blue</option>
+                    <option value="purple-c0">Purple</option>
+                    <option selected value="default-c0">Team Color (default)</option>
+                    <option disabled value="rainbow-c0">Rainbow</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" id="inputText" placeholder="Enter username..." maxlength="48">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" onclick="processText()">Process</button>
+                </div>
+            </div>
+            <label for="output">Select & copy content below:</label>
+
+            <div class="output" id="outputArea"></div>
+        </div>
+
+        <div class="preview" id="previewArea">
+        </div>
+    </div>
+
+    <script>
+        function processText() {
+            var inputText = document.getElementById('inputText').value;
+            var outputArea = document.getElementById('outputArea');
+            var previewArea = document.getElementById('previewArea');
+            var colorSelect = document.getElementById('paramcolorset0');
+            var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
+
+            var processedText = inputText;
+            if (selectedColor === 'white-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'red-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'default-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'green-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'lightgreen-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'moneygreen-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'lightred-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'ct-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 't-c0') {
+                processedText = '	' + inputText; 
+            } else if (selectedColor === 'lightblue-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'blue-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'purple-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'lightred2-c0') {
+                processedText = '' + inputText; 
+            }
+            outputArea.innerHTML = '<p>' + processedText + '</p>';
+            updatePreview();
+        }
+
+        function updatePreview() {
+            var inputText = document.getElementById('inputText').value;
+            var previewArea = document.getElementById('previewArea');
+            var colorSelect = document.getElementById('paramcolorset0');
+            var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
+
+            var processedText = inputText;
+            if (selectedColor === 'white-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'red-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'default-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'green-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'lightgreen-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'moneygreen-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'lightred-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'ct-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 't-c0') {
+                processedText = '	' + inputText; 
+            } else if (selectedColor === 'lightblue-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'blue-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'purple-c0') {
+                processedText = '' + inputText; 
+            } else if (selectedColor === 'lightred2-c0') {
+                processedText = '' + inputText; 
+            }   
+
+            // Hide special character in preview and set text color to white for "white-c0" and "red-c0"
+            var textColor = selectedColor === 'white-c0' ? 'white' : 'inherit';
+            previewArea.innerHTML = '<h2>Preview</h2>' +
+                '<p style="color: ' + textColor + ';">' + processedText.replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('	', '').replace('', '').replace('', '').replace('', '').replace('', '') + '</p>';
+        }
+    </script>
+</body>
+
+</html>
