@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -98,9 +97,9 @@
             width: calc(50% - 10px);
             overflow-y: auto;
         }
+
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="input-container">
@@ -138,14 +137,12 @@
         <div class="preview" id="previewArea">
         </div>
     </div>
-
     <script>
         function processText() {
             var inputText = document.getElementById('inputText').value;
             var outputArea = document.getElementById('outputArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
-
             var processedText = sanitizeInput(inputText); // Fixed: Call sanitizeInput function
             if (selectedColor === 'white-c0') {
                 processedText = '' + processedText;
@@ -183,14 +180,12 @@
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
         }
-
         function updatePreview() {
             var inputText = document.getElementById('inputText').value;
             var sanitizedInput = sanitizeInput(inputText);
             var previewArea = document.getElementById('previewArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
-
             var processedText = sanitizedInput;
             if (selectedColor === 'white-c0') {
                 processedText = '' + processedText;
@@ -219,11 +214,11 @@
             } else if (selectedColor === 'lightred2-c0') {
                 processedText = '' + processedText;
             }
-
+            var processedText = processedText + ': glhf'
             // Hide special character in preview and set text color to white for "white-c0" and "red-c0"
             var textColor = selectedColor === 'white-c0' || selectedColor === 'red-c0' ? 'white' : 'inherit';
             previewArea.innerHTML = '<h2>Preview</h2>' +
-                '<p style="color: ' + textColor + ';">' + sanitizedInput + '</p>';
+                '<p style="color: ' + textColor + ';">' + processedText + '</p>';
         }
     </script>
 </body>
