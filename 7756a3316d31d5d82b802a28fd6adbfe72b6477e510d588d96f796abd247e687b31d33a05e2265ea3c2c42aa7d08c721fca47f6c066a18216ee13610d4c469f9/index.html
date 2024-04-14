@@ -9,16 +9,11 @@
     <meta property="og:title" content="CS:2 | CLR - 1.0002 (beta)">
     <meta property="og:description" content="Best CS:2 username configurator">
     <meta name="theme-color" content="#00b7ff">
-    <meta property="og:image" content="https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/2.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/2.png">
     <meta property="og:url" content="https://lmaogoodcodenotreally.github.io/clr/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="192x192" href="android-chrome-192x192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="android-chrome-512x512.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" href="favicon.ico">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.1">
     <title>CS:2 | CLR</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -130,7 +125,7 @@
                 </select>
             </div>
             <div class="input-group">
-                <input type="text" class="form-control" id="inputText" placeholder="Enter username..." maxlength="48">
+                <input type="text" class="form-control" id="inputText" placeholder="Enter username..." maxlength="48"> 
                 <div class="input-group-append">
                     <button class="btn btn-primary" onclick="processText()">Process</button>
                 </div>
@@ -148,83 +143,88 @@
         function processText() {
             var inputText = document.getElementById('inputText').value;
             var outputArea = document.getElementById('outputArea');
-            var previewArea = document.getElementById('previewArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
 
-            var processedText = inputText;
+            var processedText = sanitizeInput(inputText); // Fixed: Call sanitizeInput function
             if (selectedColor === 'white-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'red-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'default-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'green-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'lightgreen-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'moneygreen-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'lightred-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'ct-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 't-c0') {
-                processedText = '	' + inputText;
+                processedText = '	' + processedText;
             } else if (selectedColor === 'lightblue-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'blue-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'purple-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'lightred2-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             }
             outputArea.innerHTML = '<p>' + processedText + '</p>';
             updatePreview();
         }
+        function sanitizeInput(inputText) {
+            return inputText.replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
 
         function updatePreview() {
             var inputText = document.getElementById('inputText').value;
+            var sanitizedInput = sanitizeInput(inputText);
             var previewArea = document.getElementById('previewArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
 
-            var processedText = inputText;
+            var processedText = sanitizedInput;
             if (selectedColor === 'white-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'red-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'default-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'green-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'lightgreen-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'moneygreen-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'lightred-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'ct-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 't-c0') {
-                processedText = '	' + inputText;
+                processedText = '	' + processedText;
             } else if (selectedColor === 'lightblue-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'blue-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'purple-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             } else if (selectedColor === 'lightred2-c0') {
-                processedText = '' + inputText;
+                processedText = '' + processedText;
             }
 
             // Hide special character in preview and set text color to white for "white-c0" and "red-c0"
-            var textColor = selectedColor === 'white-c0' ? 'white' : 'inherit';
+            var textColor = selectedColor === 'white-c0' || selectedColor === 'red-c0' ? 'white' : 'inherit';
             previewArea.innerHTML = '<h2>Preview</h2>' +
-                '<p style="color: ' + textColor + ';">' + processedText.replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('	', '').replace('', '').replace('', '').replace('', '').replace('', '') + '</p>';
+                '<p style="color: ' + textColor + ';">' + sanitizedInput + '</p>';
         }
     </script>
 </body>
-
 </html>
