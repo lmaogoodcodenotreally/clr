@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="">
     <meta name="description" content="">
-    <meta property="og:title" content="CS:2 | CLR - 1.0002 (beta)">
+    <meta property="og:title" content="CLR - 1.0006 (beta)">
     <meta property="og:description" content="Best CS:2 username configurator">
     <meta name="theme-color" content="#00b7ff">
     <meta property="og:image" content="https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/2.png">
@@ -13,7 +13,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.1">
-    <title>CS:2 | CLR</title>
+    <title>CLR - 1.0006 (beta)</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -23,19 +23,19 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
+        .array {
+            background: radial-gradient(white, #C6CBD0, #B6BAC0, #D22CE4, #FF0000, #FF4141, #EB4C4C, #EDE47B, #C0FF91, #A3FF48, #41FF41, #4C6AFF, #5F99D9);
 
+        }
         .btn-primary {
             box-shadow: none;
         }
-
         .btn-primary:focus {
             box-shadow: none;
         }
-
         .container {
             background-color: #222121;
             border-radius: 8px;
@@ -45,31 +45,31 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: normal;
         }
-
         .input-container {
             width: calc(50% - 10px);
             margin-bottom: 20px;
         }
-
         .input-group {
             margin-bottom: 20px;
         }
-
         .form-control:focus {
             border-color: #1c1c1c;
             background-color: #1c1c1c;
             color: #fff;
             box-shadow: none;
         }
-
         .form-control {
             border-radius: 4px;
             border-color: #1c1c1c;
             background-color: #1c1c1c;
             color: #fff;
         }
-
         .output {
             background-color: #1c1c1c;
             padding: 10px;
@@ -78,18 +78,17 @@
             width: calc(100% - 10px);
             overflow-y: auto;
         }
-
         .output p {
             margin: 0;
         }
-
         .select-menu {
             width: calc(50% - 10px);
             color: #fff;
         }
-
         .preview {
             background-color: #1c1c1c;
+            background-image: url('https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/image.png');
+            opacity: 0.8;
             color: #f0f0f0;
             border-radius: 8px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -97,26 +96,24 @@
             width: calc(50% - 10px);
             overflow-y: auto;
         }
-
     </style>
 </head>
 <body>
     <div class="container">
         <div class="input-container">
-            <h1 class="text-center">CS:2 | CLR</h1>
             <label for="paramcolorset0">Color</label>
             <div class="input-group">
-                <select class="form-control" id="paramcolorset0" onchange="updatePreview()">
+                <select class="form-control" id="paramcolorset0" onchange="updatePreview(); updateButtonColor()">
                     <option value="white-c0">White</option>
-                    <option value="lightred-c0">LightRed</option>
                     <option value="lightred2-c0">LightRed2</option>
+                    <option value="lightred-c0">LightRed</option>
                     <option value="red-c0">Red</option>
-                    <option value="t-c0">T Color</option>
+                    <option value="t-c0">Yellow / T</option>
                     <option value="moneygreen-c0">MoneyGreen</option>
                     <option value="green-c0">Green</option>
                     <option value="lightgreen-c0">LightGreen</option>
                     <option value="lightblue-c0">LightBlue</option>
-                    <option value="ct-c0">CT Color</option>
+                    <option value="ct-c0">Silver / CT</option>
                     <option value="blue-c0">Blue</option>
                     <option value="purple-c0">Purple</option>
                     <option selected value="default-c0">Team Color (default)</option>
@@ -124,16 +121,14 @@
                 </select>
             </div>
             <div class="input-group">
-                <input type="text" class="form-control" id="inputText" placeholder="Enter username..." maxlength="48"> 
+                <input type="text" class="form-control" id="inputText" placeholder="Your username..." maxlength="48"> 
                 <div class="input-group-append">
-                    <button class="btn btn-primary" onclick="processText()">Process</button>
+                    <button class="btn btn-primary" id="setButton" onclick="processText()">Set</button>
                 </div>
             </div>
-            <label for="output">Select &amp; copy content below:</label>
-
+            <label for="output">raw:</label>
             <div class="output" id="outputArea"></div>
         </div>
-
         <div class="preview" id="previewArea">
         </div>
     </div>
@@ -143,7 +138,7 @@
             var outputArea = document.getElementById('outputArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
-            var processedText = sanitizeInput(inputText); // Fixed: Call sanitizeInput function
+            var processedText = sanitizeInput(inputText);
             if (selectedColor === 'white-c0') {
                 processedText = '' + processedText;
             } else if (selectedColor === 'red-c0') {
@@ -159,7 +154,7 @@
             } else if (selectedColor === 'lightred-c0') {
                 processedText = '' + processedText;
             } else if (selectedColor === 'ct-c0') {
-                processedText = '' + processedText;
+                processedText = '' + processedText;    
             } else if (selectedColor === 't-c0') {
                 processedText = '	' + processedText;
             } else if (selectedColor === 'lightblue-c0') {
@@ -186,11 +181,95 @@
             var previewArea = document.getElementById('previewArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
-            var processedText = sanitizedInput + ': glhf'
-            // Hide special character in preview and set text color to white for "white-c0" and "red-c0"
-            var textColor = selectedColor === 'white-c0' || selectedColor === 'red-c0' ? 'white' : 'inherit';
-            previewArea.innerHTML = '<h2>Preview</h2>' +
-                '<p style="color: ' + textColor + ';">' + processedText + '</p>';
+            var processedText = sanitizedInput;
+            var textColor;
+            var placeholderStrings = ['GLHF.', 'gl', 'glhf!', 'GLHF!', 'hfhf', 'Coded by 6_6_7', 'HvH ?', 'hi!', 'gamesense sided map', 'Hello!', '1337', 'pasted af!', ')', '^)','uid issue', 'skeet sided map!', 'yessir!', 'hacky_beta_dont_use', 'rep movsb','bruhh','bruh'];
+            var randomIndex = Math.floor(Math.random() * placeholderStrings.length);
+            var randomString = placeholderStrings[randomIndex];
+            if (selectedColor === 'ct-c0') {
+                textColor = '#C6CBD0';         
+            } else if (selectedColor === 'red-c0') {
+                textColor = '#FF0000';
+            } else if (selectedColor === 'lightred-c0') {
+                textColor = '#FF4141';
+            } else if (selectedColor === 'lightred2-c0') {
+                textColor = '#EB4C4C';
+            } else if (selectedColor === 'white-c0') {
+                textColor = 'white';
+            } else if (selectedColor === 'blue-c0') {
+                textColor = '#4C6AFF';
+            } else if (selectedColor === 'purple-c0') {
+                textColor = '#D22CE4';
+            } else if (selectedColor === 'green-c0') {
+                textColor = '#41FF41';
+            } else if (selectedColor === 'default-c0') {
+                textColor = '#B6BAC0';  
+            } else if (selectedColor === 'lightgreen-c0') {
+                textColor = '#C0FF91';
+            } else if (selectedColor === 'moneygreen-c0') {
+                textColor = '#A3FF48';
+            } else if (selectedColor === 't-c0') {
+                textColor = '#EDE47B';
+            } else if (selectedColor === 'lightblue-c0') {
+                textColor = '#5F99D9';
+            } else {
+                textColor = 'inherit';
+            }
+            if (sanitizedInput.trim() !== '') {
+                processedText += '<span style="color: ' + textColor + ';">:</span><span style="color: white;">' + randomString + '</span>';
+            }
+            var paragraphs = previewArea.getElementsByTagName('p');
+            if (paragraphs.length > 1) {
+                for (var i = 1; i < paragraphs.length; i++) {
+                    paragraphs[i].style.marginTop = '3px';
+                }
+            } else {
+                var paragraph = '<p style="margin-top: 100px;"><span style="color: ' + textColor + ';">' + processedText + '</span></p>';
+                previewArea.innerHTML += paragraph;
+                paragraphs = previewArea.getElementsByTagName('p');
+            }
+            if (paragraphs.length >= 2) {
+                previewArea.removeChild(paragraphs[0]);
+            }
+        }
+        function updateButtonColor() {
+            var colorSelect = document.getElementById('paramcolorset0');
+            var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
+            var setButton = document.getElementById('setButton');
+            var buttonColor;
+            var buttonTextColor = 'black';
+            if (selectedColor === 'white-c0') {
+                buttonColor = 'white';
+                buttonTextColor = 'black'; 
+            } else if (selectedColor === 'ct-c0') {
+                buttonColor = '#C6CBD0';         
+            } else if (selectedColor === 'red-c0') {
+                buttonColor = '#FF0000';
+            } else if (selectedColor === 'lightred-c0') {
+                buttonColor = '#FF4141';
+            } else if (selectedColor === 'lightred2-c0') {
+                buttonColor = '#EB4C4C';
+            } else if (selectedColor === 'blue-c0') {
+                buttonColor = '#4C6AFF';
+            } else if (selectedColor === 'purple-c0') {
+                buttonColor = '#D22CE4';
+            } else if (selectedColor === 'green-c0') {
+                buttonColor = '#41FF41';
+            } else if (selectedColor === 'default-c0') {
+                buttonColor = '#B6BAC0';  
+            } else if (selectedColor === 'lightgreen-c0') {
+                buttonColor = '#C0FF91';
+            } else if (selectedColor === 'moneygreen-c0') {
+                buttonColor = '#A3FF48';
+            } else if (selectedColor === 't-c0') {
+                buttonColor = '#EDE47B';
+            } else if (selectedColor === 'lightblue-c0') {
+                buttonColor = '#5F99D9';
+            } else {
+                buttonColor = 'inherit';
+            }
+            setButton.style.backgroundColor = buttonColor;
+            setButton.style.color = buttonTextColor;
         }
     </script>
 </body>
