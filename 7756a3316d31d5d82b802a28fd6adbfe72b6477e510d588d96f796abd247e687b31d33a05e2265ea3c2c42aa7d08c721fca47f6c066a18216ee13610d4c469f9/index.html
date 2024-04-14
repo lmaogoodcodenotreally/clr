@@ -186,35 +186,7 @@
             var previewArea = document.getElementById('previewArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
-            var processedText = sanitizedInput;
-            if (selectedColor === 'white-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'red-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'default-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'green-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'lightgreen-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'moneygreen-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'lightred-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'ct-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 't-c0') {
-                processedText = '	' + processedText;
-            } else if (selectedColor === 'lightblue-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'blue-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'purple-c0') {
-                processedText = '' + processedText;
-            } else if (selectedColor === 'lightred2-c0') {
-                processedText = '' + processedText;
-            }
-            var processedText = processedText + ': glhf'
+            var processedText = sanitizedInput + ': glhf'
             // Hide special character in preview and set text color to white for "white-c0" and "red-c0"
             var textColor = selectedColor === 'white-c0' || selectedColor === 'red-c0' ? 'white' : 'inherit';
             previewArea.innerHTML = '<h2>Preview</h2>' +
