@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="">
     <meta name="description" content="">
-    <meta property="og:title" content="CLR - 1.0006 (beta)">
+    <meta property="og:title" content="CS:2 | CLR - 1.0002 (beta)">
     <meta property="og:description" content="Best CS:2 username configurator">
     <meta name="theme-color" content="#00b7ff">
     <meta property="og:image" content="https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/2.png">
@@ -13,8 +13,9 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.1">
-    <title>CLR - 1.0006 (beta)</title>
+    <title>CS:2 | CLR</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animation_background.css">
     <style>
         body {
             font-family: 'Verdana', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,22 +24,26 @@
             margin: 0;
             padding: 0;
             display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            overflow: hidden;
         }
+
         .array {
             background: radial-gradient(white, #C6CBD0, #B6BAC0, #D22CE4, #FF0000, #FF4141, #EB4C4C, #EDE47B, #C0FF91, #A3FF48, #41FF41, #4C6AFF, #5F99D9);
 
         }
         .btn-primary {
             box-shadow: none;
-            border: none;
             border-radius: 0%;
+            border-color: transparent;
         }
+
+        .btn-primary:active,
         .btn-primary:focus {
             box-shadow: none;
-            border: none;
             border-radius: 0%;
+            border-color: transparent;
         }
         .container {
             background-color: #222121;
@@ -49,31 +54,31 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            cursor: normal;
         }
+
         .input-container {
             width: calc(50% - 10px);
             margin-bottom: 20px;
         }
+
         .input-group {
             margin-bottom: 20px;
         }
+
         .form-control:focus {
             border-color: #1c1c1c;
             background-color: #1c1c1c;
             color: #fff;
             box-shadow: none;
         }
+
         .form-control {
             border-radius: 4px;
             border-color: #1c1c1c;
             background-color: #1c1c1c;
             color: #fff;
         }
+
         .output {
             background-color: #1c1c1c;
             padding: 10px;
@@ -82,17 +87,20 @@
             width: calc(100% - 10px);
             overflow-y: auto;
         }
+
         .output p {
             margin: 0;
         }
+
         .select-menu {
             width: calc(50% - 10px);
             color: #fff;
         }
+
         .preview {
             background-color: #1c1c1c;
             background-image: url('https://raw.githubusercontent.com/lmaogoodcodenotreally/clr/main/7756a3316d31d5d82b802a28fd6adbfe72b6477e510d588d96f796abd247e687b31d33a05e2265ea3c2c42aa7d08c721fca47f6c066a18216ee13610d4c469f9/image.png');
-            opacity: 0.8;
+            opacity: 0.8; /* Adjust the opacity as needed */
             color: #f0f0f0;
             border-radius: 8px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -100,6 +108,7 @@
             width: calc(50% - 10px);
             overflow-y: auto;
         }
+
     </style>
 </head>
 <body>
@@ -121,7 +130,7 @@
                     <option value="blue-c0">Blue</option>
                     <option value="purple-c0">Purple</option>
                     <option selected value="default-c0">Team Color (default)</option>
-                    <option disabled value="rainbow-c0">Rainbow (Soon!)</option>
+                    <option disabled value="rainbow-c0">Rainbow</option>
                 </select>
             </div>
             <div class="input-group">
@@ -131,8 +140,10 @@
                 </div>
             </div>
             <label for="output">raw:</label>
+
             <div class="output" id="outputArea"></div>
         </div>
+
         <div class="preview" id="previewArea">
         </div>
     </div>
@@ -142,7 +153,7 @@
             var outputArea = document.getElementById('outputArea');
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
-            var processedText = sanitizeInput(inputText);
+            var processedText = sanitizeInput(inputText); // Fixed: Call sanitizeInput function
             if (selectedColor === 'white-c0') {
                 processedText = '' + processedText;
             } else if (selectedColor === 'red-c0') {
@@ -235,13 +246,15 @@
             if (paragraphs.length >= 2) {
                 previewArea.removeChild(paragraphs[0]);
             }
+
         }
+
         function updateButtonColor() {
             var colorSelect = document.getElementById('paramcolorset0');
             var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
             var setButton = document.getElementById('setButton');
             var buttonColor;
-            var buttonTextColor = 'black';
+            var buttonTextColor = 'black'; // Default text color
             if (selectedColor === 'white-c0') {
                 buttonColor = 'white';
                 buttonTextColor = 'black'; 
@@ -273,7 +286,7 @@
                 buttonColor = 'inherit';
             }
             setButton.style.backgroundColor = buttonColor;
-            setButton.style.color = buttonTextColor;
+            setButton.style.color = buttonTextColor; // Set button text color
         }
     </script>
 </body>
